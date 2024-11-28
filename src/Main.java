@@ -1,13 +1,45 @@
 public class Main {
     public static void main(String[] args) {
         Player player1 = new Player();
-        Player player2 = new Player();
-
         GameBoard board1 = new GameBoard();
-        GameBoard board2 = new GameBoard();
-
         Game.greeting();
+        board1.printBoard();
+        
+        Battleship bs1 = new Battleship(0, 0, 0);
+//        bs1.fillShipCellArray();
+        bs1.printShipCells();
 
+        System.out.println();
+
+        Battleship bs2 = new Battleship(9, 0, 1);
+//        bs2.fillShipCellArray();
+        bs2.printShipCells();
+
+        System.out.println();
+
+        Battleship bs3 = new Battleship(4, 4, 0);
+//        bs3.fillShipCellArray();
+        bs3.printShipCells();
+
+        System.out.println();
+
+        Destroyer d1   = new Destroyer(0, 2, 1);
+//        d1.fillShipCellArray();
+        d1.printShipCells();
+
+        System.out.println();
+
+        Destroyer d2   = new Destroyer(8, 9, 0);
+//        d2.fillShipCellArray();
+        d2.printShipCells();
+
+        System.out.println(board1.placeShip(bs1));
+        System.out.println(board1.placeShip(bs2));
+        System.out.println(board1.placeShip(bs3));
+        System.out.println(board1.placeShip(d1));
+        System.out.println(board1.placeShip(d2));
+
+        board1.updateShipsOnBoard();
         board1.printBoard();
 
         /*
