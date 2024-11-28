@@ -13,6 +13,10 @@ public class shipCell {
         this.x =x;
         this.y =y;
     }
+    public void printCell()
+    {
+        System.out.println("shipCell: " + x + " " + y + " " + isDamaged);
+    }
 
     public boolean getIsDamaged()
     {
