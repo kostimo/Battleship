@@ -6,6 +6,8 @@ public class Main {
         GameBoard board1 = new GameBoard();
         GameBoard board2 = new GameBoard();
 
+        Game.greeting();
+
         board1.printBoard();
 
         /*
