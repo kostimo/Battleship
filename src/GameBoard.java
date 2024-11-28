@@ -1,22 +1,66 @@
 public class GameBoard {
-    private final int ROWS =10;
-    private final int COLS =10;
+    private final int ROWS =10, COLS =10;
     private String[][] grid =new String[ROWS][COLS];
-    private int shipCounter =0;        // for a tracking position in a ships array
-    private Ship[] ships =new Ship[5]; //board has 5 ships on it
+
+    private int counter =0;                   // for tracking a position in a ships array
+    private Ship[] shipsOnBoard =new Ship[5]; //board has 5 ships on it
 
     public GameBoard()
     {
-        //generates default grid filled with water
+        generateDefaultBoard();
+    }
+
+    private void generateDefaultBoard()
+    {
         for (int i=0; i<ROWS; i++)
         {
             for (int j=0; j<COLS; j++)
             {
-                grid[i][j] = "~";
+                    grid[i][j] = "~";
             }
         }
     }
 
+//    public void updateBoard()
+//    {
+//        updateShipsOnBoard();
+//        fillBoardWithWater();
+//    }
+
+    //fills grid with water wherever the cells are not occupied with ships
+//    private void fillBoardWithWater()
+//    {
+//        for (int i=0; i<ROWS; i++)
+//        {
+//            for (int j=0; j<COLS; j++)
+//            {
+//                if (grid[i][j].isEmpty())
+//                {
+//                    grid[i][j] = "~";
+//                }
+//            }
+//        }
+//    }
+
+    public void updateShipsOnBoard()
+    {
+        for (Ship ship: shipsOnBoard)     // traverses all ships on the board
+        {
+            shipCell[] cells = ship.getShipCells();
+//            System.out.println(cells[0].getX() + " " + cells[0].getY());
+            for (shipCell cell: cells)           // traverses shipCells within each ship
+            {
+                int x =cell.getX();
+                int y =cell.getY();
+                if (cell.getIsDamaged())
+                {
+                    this.grid[y][x] ="X";
+                } else {
+                    this.grid[y][x] ="S";
+                }
+            }
+        }
+    }
     public void printBoard()
     {
         for (int i=0; i<ROWS; i++)
@@ -51,9 +95,9 @@ public class GameBoard {
         }
     }
 
-    public void addShip(Ship ship)
+    private void addShip(Ship ship)
     {
-        ships[shipCounter++] =ship;
+        shipsOnBoard[counter++] =ship;
     }
 
     public boolean isHit() {
