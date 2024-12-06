@@ -73,6 +73,31 @@ public class GameBoard {
         }
     }
 
+    public boolean shootShip(Player player, int x, int y)
+    {
+        switch (grid[y][x]) {
+            case "~":
+                return false;
+            case "S":
+            {
+                // searching for the shipCell
+                for (Ship ship : this.shipsOnBoard) {
+                    shipCell[] cells = ship.getShipCells();
+                    for (shipCell cell : cells) {
+                        if (cell.getX() == x && cell.getY() == y) {
+                            cell.setIsDamaged();
+                            return true;
+                        }
+                    }
+                }
+            }
+            default:
+                player.setSecondTry(true);
+                return false;
+        }
+    }
+
+
     // FUNCTION DOESNT CHECK SHIP OVERLAPPING YET
     public boolean placeShip(Ship ship) {
         switch (ship.getDirection()) {
