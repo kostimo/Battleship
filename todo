@@ -1,0 +1,11 @@
+Things likely to be implemented:
+
+[6.12.2024]
+* new board design
+* dynamic array for GameBoard.shipsOnBoard instead of array
+* Ship.direction likely to be boolean and be named smth. like isVertical
+
+* shooting logic for player is not implemented yet (Player.shoot())
+* ship overlapping check is not done yet (in GameBoard.placeShip())
+* GameBoard may need a method to check if all ships on the board are destroyed
+  (could be named isDestroyed). It will be used in Game.checkWinner()
