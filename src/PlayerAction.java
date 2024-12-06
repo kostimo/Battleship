@@ -1,4 +1,4 @@
 public interface PlayerAction {
-    void placeShip(int x, int y, int direction);
+    void placeShip(Ship ship);
     boolean shoot(int x, int y);
 }
