@@ -56,15 +56,55 @@ public class GameBoard {
                 {
                     this.grid[y][x] ="X";
                 } else {
-                    this.grid[y][x] ="S";
+                    this.grid[y][x] ="■";
                 }
             }
         }
     }
     public void printBoard()
     {
+        System.out.print("  ");
+        for (int i = 1; i <= ROWS; i++) {
+            System.out.print(" " + i + " ");
+        }
+        System.out.println();
+
         for (int i=0; i<ROWS; i++)
         {
+            switch (i) {
+                case 0:
+                    System.out.print("A  ");
+                    break;
+                case 1:
+                    System.out.print("B  ");
+                    break;
+                case 2:
+                    System.out.print("C  ");
+                    break;
+                case 3:
+                    System.out.print("D  ");
+                    break;
+                case 4:
+                    System.out.print("E  ");
+                    break;
+                case 5:
+                    System.out.print("F  ");
+                    break;
+                case 6:
+                    System.out.print("G  ");
+                    break;
+                case 7:
+                    System.out.print("H  ");
+                    break;
+                case 8:
+                    System.out.print("I  ");
+                    break;
+                case 9:
+                    System.out.print("J  ");
+                    break;
+                default:
+                    System.out.print("   ");
+            }
             for (int j=0; j<COLS; j++)
             {
                 System.out.print(grid[i][j] + "  ");
