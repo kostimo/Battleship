@@ -2,8 +2,9 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class Player implements PlayerAction {
-    private String name;
-    private GameBoard board =new GameBoard();
+    private final String name;
+    private boolean secondTry;   // in case player shoots a cell that has already been damaged
+    private final GameBoard board =new GameBoard();
     public Player(String name)
     {
         this.name =name;
@@ -17,27 +18,38 @@ public class Player implements PlayerAction {
         char type = sc.next().charAt(0);
         int x = sc.nextInt();
         int y = sc.nextInt();
-        int direction = sc.nextInt();
+        boolean isVertical = sc.nextBoolean();
 
-        switch (type)
-        {
-            case 'b': return new Battleship(x, y, direction);
-            default: return new Destroyer(x, y, direction);
+        if (type == 'b') {
+            return new Battleship(x, y, isVertical);
         }
+        return new Destroyer(x, y, isVertical);
     }
     @Override
     public void placeShip(Ship ship) {
         boolean success = this.board.placeShip(ship);
         if (success) System.out.println("Success! The ship is placed.");
-        else System.out.println("Error! The ship couldnt be placed.");
+        else System.out.println("Error! The ship couldn't be placed.");
     }
 
     @Override
-    public boolean shoot(int x, int y) {
-        return false;
+    public void shoot(int x, int y) {
+        this.secondTry =false;
+        boolean success = this.board.shootShip(this, x, y);
+
+        if (success)             System.out.println("Success! A ship is damaged.");
+        else if (this.secondTry) System.out.println("You have already shot here earlier.\n" +
+                                                    "Please choose another area and try again.");
+        else                     System.out.println("Oh no, you have missed!");
     }
 
     public GameBoard getBoard() {
         return board;
+    }
+    public void setSecondTry(boolean secondTry) {
+        this.secondTry = secondTry;
+    }
+    public String getName() {
+        return name;
     }
 }
