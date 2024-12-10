@@ -1,60 +1,49 @@
+import java.util.ArrayList;
 
 public class Ship {
-    private int size;
-    private int direction;              // 0 for horizontal, 1 for vertical
-    private int[] position =new int[2]; //array with length 2 for ships (x, y) coordinates
-    private int counter =0;             //for tracking a position in shipCells array
-    private shipCell[] shipCells;
-    private boolean isSunk =false;
+    private final int size;
+    private final boolean isVertical;
+    private final int[] position =new int[2]; //array with length 2 for ships (x, y) coordinates
+    private final ArrayList<shipCell> shipCells;
 
-    public Ship(int size, int x, int y, int direction)
+    public Ship(int size, int x, int y, boolean isVertical)
     {
         this.size        =size;
-        this.shipCells   = new shipCell[size];
+        this.shipCells   = new ArrayList<>(size);
         this.position[0] =x;
         this.position[1] =y;
-        this.direction   =direction;
+        this.isVertical =isVertical;
         fillShipCellArray();
     }
 
-    public void fillShipCellArray()
+    private void fillShipCellArray()
     {
-        if (this.direction == 0)       // horizontal direction
-        {
-            for (int i = 0; i < this.size; i++) {
-                shipCell cell = new shipCell(this.position[0] + i, this.position[1]);
-                addCell(cell);
-            }
-        } else if (this.direction == 1) // vertical direction
+        if (this.isVertical)     // vertical direction
         {
             for (int i = 0; i < this.size; i++) {
                 shipCell cell = new shipCell(this.position[0], this.position[1]+i);
-                addCell(cell);
+                shipCells.add(cell);
+            }
+        } else                   // horizontal direction
+        {
+            for (int i = 0; i < this.size; i++) {
+                shipCell cell = new shipCell(this.position[0] + i, this.position[1]);
+                shipCells.add(cell);
             }
         }
-        System.out.println("array filled");
     }
 
-    private void addCell(shipCell cell)
+    public boolean isSunk()
     {
-        shipCells[this.counter++] =cell;
-    }
-
-    public boolean checkShipCells()
-    {
-        boolean isShipSunk =true;
-        for(int i=0; i<this.size; i++)
+        boolean isSunk = true;
+        for(shipCell cell: this.shipCells)
         {
-            if (!shipCells[i].getIsDamaged()) // if at least one cell is not damaged, then the ship isn't sunk yet
+            if (!cell.getIsDamaged()) // if at least one cell is not damaged, then the ship isn't sunk yet
             {
-                isShipSunk =false;
+                isSunk = false;
+                break;
             }
         }
-        if (isShipSunk)
-        {
-            this.isSunk =true;
-        }
-
         return isSunk;
     }
 
@@ -64,7 +53,7 @@ public class Ship {
         for (shipCell cell: shipCells) { cell.printCell(); }
     }
     public int getSize() { return size; }
-    public int getDirection() { return direction; }
+    public boolean getVertical() { return isVertical; }
     public int[] getPosition() { return position; }
-    public shipCell[] getShipCells() { return shipCells; }
+    public ArrayList<shipCell> getShipCells() { return shipCells; }
 }
