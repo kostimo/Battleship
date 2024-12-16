@@ -57,5 +57,16 @@ public class Main {
             // Test zur Erkennung der Koordinaten als int und boolean
             //System.out.println(x + " " + y + " " + isHorizontal);
         } while (keepRunning);
+
+
+        //generateCoords(){}
+        int comX = (int) (Math.random()*10)+1;
+        int comY = (int) (Math.random()*10)+1;
+        int comDirection = (int) (Math.random()*2);
+        boolean comIsHorizontal;
+
+        comIsHorizontal = comDirection != 0;
+
+        System.out.println("X: " + comX + ", Y: " + comY + ", direction: " + comIsHorizontal);
     }
 }
