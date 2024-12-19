@@ -13,3 +13,6 @@ Things likely to be implemented:
 [10.12.2024]
 * game loop and the class Game.java
 * update UML class diagram
+
+[20.12.2024]
+* the players ships should be able to get placed randomly
