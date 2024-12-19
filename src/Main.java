@@ -15,10 +15,10 @@ public class Main {
             if (iteration < 2) {
                 Game.askForName(currentPlayer);
                 for (int i = 0; i < 5; i++) {
-                    Game.showBoard(currentPlayer);
+                    Game.showBoard(currentPlayer, false);
                     Game.askForShip(currentPlayer);
                 }
-                Game.showBoard(currentPlayer);
+                Game.showBoard(currentPlayer, false);
                 System.out.print("\nGreat, my capitan! All ships are successfully placed!\n\n");
 
             // battleship begins
@@ -26,14 +26,20 @@ public class Main {
             {
                 // one-time message in the beginning
                 if (iteration == 2) System.out.print("\nMay BATTLESHIP begin!\n");
+
                 Game.printPlayerHeader(currentPlayer);
+                Game.showBoard(currentPlayer, false);
                 System.out.print("""
                         \nOpponent's board
                                  |
-                                 V
-                        """);
-                Game.showBoard(nextPlayer);
-                Game.askToShoot(nextPlayer); // opponent gets shot
+                                 V""");
+                Game.showBoard(nextPlayer, true);
+
+                // opponent gets shot
+                do {
+                    Game.askToShoot(nextPlayer);
+                }
+                while (currentPlayer.isSecondTry());
 
                 // winner checking after the turn
                 int winner =Game.checkWinner(players);
