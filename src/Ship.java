@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Ship {
+public abstract class Ship {
     private final int size;
     private final boolean isVertical;
     private final int[] position =new int[2]; //array with length 2 for ships (x, y) coordinates
@@ -9,13 +9,12 @@ public class Ship {
     public Ship(int size, int x, int y, boolean isVertical)
     {
         this.size        =size;
-        this.shipCells   = new ArrayList<>(size);
+        this.shipCells   =new ArrayList<>(size);
         this.position[0] =x;
         this.position[1] =y;
-        this.isVertical =isVertical;
+        this.isVertical  =isVertical;
         fillShipCellArray();
     }
-
     private void fillShipCellArray()
     {
         if (this.isVertical)     // vertical direction
@@ -32,7 +31,6 @@ public class Ship {
             }
         }
     }
-
     public boolean isSunk()
     {
         boolean isSunk = true;
@@ -46,12 +44,12 @@ public class Ship {
         }
         return isSunk;
     }
-
     public void printShipCells()
     {
         System.out.println("shipCells:");
         for (shipCell cell: shipCells) { cell.printCell(); }
     }
+
     public int getSize() { return size; }
     public boolean getVertical() { return isVertical; }
     public int[] getPosition() { return position; }
