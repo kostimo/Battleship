@@ -45,7 +45,9 @@ public class GameBoard {
     public boolean shootShip(Player player, int x, int y)
     {
         switch (grid[y][x]) {
-            case "~":  return false;
+            case "~":
+                grid[y][x] ="-";
+                return false;
             case "■":
                 // traversing shipCells
                 for (Ship ship : this.shipsOnBoard) {

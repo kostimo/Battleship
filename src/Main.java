@@ -27,9 +27,13 @@ public class Main {
                 // one-time message in the beginning
                 if (iteration == 2) System.out.print("\nMay BATTLESHIP begin!\n");
                 Game.printPlayerHeader(currentPlayer);
-                System.out.print("\nEnemy board\n");
+                System.out.print("""
+                        \nOpponent's board
+                                 |
+                                 V
+                        """);
                 Game.showBoard(nextPlayer);
-                Game.askToShoot(currentPlayer);
+                Game.askToShoot(nextPlayer); // opponent gets shot
 
                 // winner checking after the turn
                 int winner =Game.checkWinner(players);

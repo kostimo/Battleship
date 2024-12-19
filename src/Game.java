@@ -53,23 +53,25 @@ public class Game {
         System.out.print("Ship orientation: ");
         char orientation = sc.next().charAt(0);
         System.out.print("Row: ");
-        char row = sc.next().charAt(0);
+        char row = Character.toUpperCase(sc.next().charAt(0));
         System.out.print("Column: ");
         int column = sc.nextInt();
 
-        Ship ship = (type == 'd')
-                ? new Destroyer(column, (int)row-65, orientation == 'v')
-                : new Battleship(column, (int)row-65, orientation == 'v');
+        // i.e. by incorrect input a destroyer will simply be created
+        Ship ship = (type == 'b')
+                ? new Battleship(column, (int)row-65, orientation == 'v')
+                : new Destroyer(column, (int)row-65, orientation == 'v');
         player.placeShip(ship);
     }
     public static void askToShoot(Player player)
     {
         System.out.print("\nMy capitan, send this bastard to the bottom!");
-        System.out.print("\n(first character is the row, second - the column, without space)");
+        System.out.print("\n(first character is the row, second - the column, without space)\n For example: a0\n");
         System.out.print("\nYour coordinates: ");
         Scanner sc = new Scanner(System.in);
-        char row = sc.next().charAt(0);
-        int column = sc.nextInt();
+        String input =sc.next();
+        char row = Character.toUpperCase(input.charAt(0));
+        int column = Character.getNumericValue(input.charAt(1));
         player.shoot(column, row-65);
     }
     public static void greetWinner(Player winner)
