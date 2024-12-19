@@ -33,38 +33,15 @@ public class GameBoard {
             }
         }
     }
-    public void printBoard(Player player)
+    public boolean areAllShipsSunk()
     {
-        System.out.printf("\n%s's current board:\n", player.getName());
-        System.out.print("  ");
-        for (int i = 1; i <= COLS; i++) {
-            System.out.print(" " + i + " ");
-        }
-        System.out.println();
-
-        for (int i=0; i<ROWS; i++)
+        boolean allShipsSunk =true;
+        for (Ship ship: shipsOnBoard)
         {
-            switch (i) {
-                case 0 -> System.out.print("A  ");
-                case 1 -> System.out.print("B  ");
-                case 2 -> System.out.print("C  ");
-                case 3 -> System.out.print("D  ");
-                case 4 -> System.out.print("E  ");
-                case 5 -> System.out.print("F  ");
-                case 6 -> System.out.print("G  ");
-                case 7 -> System.out.print("H  ");
-                case 8 -> System.out.print("I  ");
-                case 9 -> System.out.print("J  ");
-                default -> System.out.print("   ");
-            }
-            for (int j=0; j<COLS; j++)
-            {
-                System.out.print(grid[i][j] + "  ");
-            }
-            System.out.println();
+            if (!ship.isSunk()) allShipsSunk =false;
         }
+        return allShipsSunk;
     }
-
     public boolean shootShip(Player player, int x, int y)
     {
         switch (grid[y][x]) {
@@ -88,8 +65,6 @@ public class GameBoard {
         System.out.println("GameBoard.shootShip() error");
         return false;
     }
-
-
     // FUNCTION DOESNT CHECK SHIP OVERLAPPING YET
     public boolean placeShip(Ship ship) {
         // if ship is vertical
@@ -110,5 +85,39 @@ public class GameBoard {
                 return true;
             }
         }
+    }
+    public void printBoard()
+    {
+        System.out.print("  ");
+        for (int i = 0; i < COLS; i++) {
+            System.out.print(" " + i + " ");
+        }
+        System.out.println();
+
+        for (int i=0; i<ROWS; i++)
+        {
+            switch (i) {
+                case 0 -> System.out.print("A  ");
+                case 1 -> System.out.print("B  ");
+                case 2 -> System.out.print("C  ");
+                case 3 -> System.out.print("D  ");
+                case 4 -> System.out.print("E  ");
+                case 5 -> System.out.print("F  ");
+                case 6 -> System.out.print("G  ");
+                case 7 -> System.out.print("H  ");
+                case 8 -> System.out.print("I  ");
+                case 9 -> System.out.print("J  ");
+                default -> System.out.print("?  ");
+            }
+            for (int j=0; j<COLS; j++)
+            {
+                System.out.print(grid[i][j] + "  ");
+            }
+            System.out.println();
+        }
+    }
+    public int getShipsNum()
+    {
+        return shipsOnBoard.size();
     }
 }
