@@ -32,11 +32,11 @@ public class Game {
         player.setName(name);
         System.out.printf("Hello, %s!", player.getName());
     }
-    public static void showBoard(Player player)
+    public static void showBoard(Player player, boolean hidden)
     {
-        System.out.printf("\n\n%s's current board:\n", player.getName());
+        System.out.printf("\n%s's current board:\n", player.getName());
         player.getBoard().updateShipsOnBoard();
-        player.getBoard().printBoard();
+        player.getBoard().printBoard(hidden);
     }
     public static void askForShip(Player player)
     {

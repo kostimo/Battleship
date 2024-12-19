@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GameBoard {
     private final int ROWS =10, COLS =10;
@@ -46,7 +47,7 @@ public class GameBoard {
     {
         switch (grid[y][x]) {
             case "~":
-                grid[y][x] ="-";
+                grid[y][x] ="_";
                 return false;
             case "■":
                 // traversing shipCells
@@ -67,7 +68,7 @@ public class GameBoard {
         System.out.println("GameBoard.shootShip() error");
         return false;
     }
-    // FUNCTION DOESNT CHECK SHIP OVERLAPPING YET
+    // FUNCTION DOESNT CHECK SHIP OVERLAPPING
     public boolean placeShip(Ship ship) {
         // if ship is vertical
         if (ship.getVertical()) {
@@ -88,7 +89,7 @@ public class GameBoard {
             }
         }
     }
-    public void printBoard()
+    public void printBoard(boolean hidden)
     {
         System.out.print("  ");
         for (int i = 0; i < COLS; i++) {
@@ -113,11 +114,14 @@ public class GameBoard {
             }
             for (int j=0; j<COLS; j++)
             {
-                System.out.print(grid[i][j] + "  ");
+                // if we want to hide positions of ships
+                if (hidden && Objects.equals(grid[i][j], "■")) System.out.print("~  ");
+                else System.out.print(grid[i][j] + "  ");
             }
             System.out.println();
         }
     }
+
     public int getShipsNum()
     {
         return shipsOnBoard.size();
