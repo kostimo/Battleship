@@ -1,16 +1,26 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * This class represents the game board.
+ * It is a 10 by 10 grid and can have 5 ships on it.
+ */
 public class GameBoard {
     private final int ROWS =10, COLS =10;
     private final String[][] grid =new String[ROWS][COLS];
     private final ArrayList<Ship> shipsOnBoard =new ArrayList<>(5); //board has 5 ships on it
 
+    /**
+     * Constructs the game board by generating a default board.
+     */
     public GameBoard()
     {
         generateDefaultBoard();
     }
 
+    /**
+     * Generates an empty game board with '~' as water on each spot of the grid.
+     */
     private void generateDefaultBoard()
     {
         for (int i=0; i<ROWS; i++)
@@ -18,6 +28,12 @@ public class GameBoard {
             for (int j=0; j<COLS; j++) { grid[i][j] ="~"; }
         }
     }
+
+    /**
+     * Updates the position of all ships to the game board.
+     * This method also checks the status of every ship cell and assigns the symbol accordingly:
+     * "■" -> ship present, "*" -> ship damaged, "X" -> ship sunk
+     */
     public void updateShipsOnBoard()
     {
         for (Ship ship: shipsOnBoard)     // traverses all ships on the board
@@ -34,6 +50,12 @@ public class GameBoard {
             }
         }
     }
+
+    /**
+     * Checks if all ships on the board have been sunk.
+     *
+     * @return true if all ships are sunk, false otherwise
+     */
     public boolean areAllShipsSunk()
     {
         boolean allShipsSunk =true;
@@ -43,6 +65,17 @@ public class GameBoard {
         }
         return allShipsSunk;
     }
+
+    /**
+     * Attempts to shoot at a specific cell on the board.
+     * If the cell contains part of a ship, it marks the ship cell as damaged.
+     * If the cell has already been shot at, the player will be notified.
+     *
+     * @param player The player who is shooting
+     * @param x x-coordinate
+     * @param y y-coordinate
+     * @return true if a ship was shot, otherwise false
+     */
     public boolean shootShip(Player player, int x, int y)
     {
         switch (grid[y][x]) {
@@ -68,7 +101,14 @@ public class GameBoard {
         System.out.println("GameBoard.shootShip() error");
         return false;
     }
+
     // FUNCTION DOESNT CHECK SHIP OVERLAPPING
+    /**
+     * Places a ship on the in the {@link Ship}-class specified position, either vertically or horizontally.
+     *
+     * @param ship The ship that gets placed on the board
+     * @return true if the ship is successfully placed, false if placement is invalid
+     */
     public boolean placeShip(Ship ship) {
         // if ship is vertical
         if (ship.getVertical()) {
@@ -89,6 +129,14 @@ public class GameBoard {
             }
         }
     }
+
+    /**
+     * Prints the current state of the game board and the labelling to the console.
+     * The {@code hidden}-parameter allows the program to replace the printed ships with water to hide them
+     * from the player.
+     *
+     * @param hidden if true, the ship will be hidden, otherwise the ships will be visible
+     */
     public void printBoard(boolean hidden)
     {
         System.out.print("  ");
@@ -122,6 +170,11 @@ public class GameBoard {
         }
     }
 
+    /**
+     * Gets the number of ships still on the board.
+     *
+     * @return number of ships on the board
+     */
     public int getShipsNum()
     {
         return shipsOnBoard.size();
