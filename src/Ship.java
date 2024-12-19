@@ -13,10 +13,10 @@ public abstract class Ship {
     /**
      * This is the constructor for a ship.
      *
-     * @param size: size of the ship (number of cells)
-     * @param x: x-coordinate (0 - 9)
-     * @param y: y-coordinate (0 - 9)
-     * @param isVertical: direction the ship is facing; if the ship is vertical, the value is true, otherwise false
+     * @param size size of the ship (number of cells)
+     * @param x x-coordinate (0 - 9)
+     * @param y y-coordinate (0 - 9)
+     * @param isVertical direction the ship is facing; if the ship is vertical, the value is true, otherwise false
      */
     public Ship(int size, int x, int y, boolean isVertical)
     {
@@ -79,28 +79,28 @@ public abstract class Ship {
     }
 
     /**
-     * getter for the ship size
+     * Gets the ship size
      *
      * @return size of the ship (number of cells e.g. 2)
      */
     public int getSize() { return size; }
 
     /**
-     * getter for the direction
+     * Gets the direction
      *
      * @return true for vertical or false for horizontal
      */
     public boolean getVertical() { return isVertical; }
 
     /**
-     * getter for the position
+     * Gets the position
      *
      * @return x and y coordinates
      */
     public int[] getPosition() { return position; }
 
     /**
-     * getter for a list of the ship cells
+     * Gets a list of the ship cells
      *
      * @return a list containing {@link shipCell}-objects
      */
