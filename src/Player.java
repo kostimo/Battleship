@@ -28,6 +28,9 @@ public class Player implements PlayerAction {
     public void setSecondTry(boolean secondTry) {
         this.secondTry = secondTry;
     }
+    public boolean isSecondTry() {
+        return secondTry;
+    }
     public String getName() {
         return name;
     }
