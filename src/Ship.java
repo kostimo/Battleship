@@ -14,8 +14,8 @@ public abstract class Ship {
      * This is the constructor for a ship.
      *
      * @param size size of the ship (number of cells)
-     * @param x x-coordinate (0 - 9)
-     * @param y y-coordinate (0 - 9)
+     * @param x x-coordinate from 0 to 9 for the starting position of the ship
+     * @param y y-coordinate from 0 to 9 for the starting position of the ship
      * @param isVertical direction the ship is facing; if the ship is vertical, the value is true, otherwise false
      */
     public Ship(int size, int x, int y, boolean isVertical)
