@@ -135,7 +135,7 @@ public class GameBoard {
      * The {@code hidden}-parameter allows the program to replace the printed ships with water to hide them
      * from the player.
      *
-     * @param hidden if true, the ship will be hidden, otherwise the ships will be visible
+     * @param hidden if true, the ships will be hidden, otherwise the ships will be visible
      */
     public void printBoard(boolean hidden)
     {
