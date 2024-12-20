@@ -33,7 +33,7 @@ public class Game {
         System.out.println("""
                 Welcome to the Battleship game!
                 This is a game between 2 players.
-                Firstly, each player need to enter their names and then locate 5 ships.
+                First, each player needs to enter their name and then locate 5 ships.
                 """);
     }
 
@@ -61,7 +61,7 @@ public class Game {
         Scanner sc = new Scanner(System.in);
         String name = sc.nextLine();
         player.setName(name);
-        System.out.printf("Hello, %s!", player.getName());
+        System.out.printf("Aye Aye Captain %s!", player.getName());
     }
 
     /**
@@ -90,8 +90,8 @@ public class Game {
         if (player.getBoard().getShipsNum() == 0) System.out.print("\nTime for you to create ships!");
         System.out.printf("\n%d ships left!", 5-player.getBoard().getShipsNum());
         System.out.print("""
-                \nTo create a ship enter a ship type, destroyer (d) or battleship (b),
-                ship orientation, horizontal (h) or vertical (v), row (A-J) and column (0-9)\n
+                \nTo create a ship enter: \n[1] Ship type: Destroyer (d) or Battleship (b)
+                \n[2] Ship orientation: Horizontal (h) or Vertical (v) \n[3] Row: (A-J) \n[4] Column: (0-9)\n
                 """);
 
         System.out.print("Ship type: ");
@@ -118,9 +118,9 @@ public class Game {
      */
     public static void askToShoot(Player player)
     {
-        System.out.print("\nMy capitan, send this bastard to the bottom!");
+        System.out.print("\nMy capitan, send this pirate to the bottom!");
         System.out.print("\n(first character is the row, second - the column, without space)\n For example: a0\n");
-        System.out.print("\nYour coordinates: ");
+        System.out.print("\nEnter your coordinates: ");
         Scanner sc = new Scanner(System.in);
         String input =sc.next();
         char row = Character.toUpperCase(input.charAt(0));
@@ -136,7 +136,7 @@ public class Game {
     public static void greetWinner(Player winner)
     {
         System.out.print("\n@@@@@            @@@@@@@@@@@@@@@@           @@@@@");
-        System.out.printf("\nCongrats, %s, you won! It was a brilliant battle.", winner.getName());
+        System.out.printf("\nCongratulations, %s, you won! It was a brilliant battle.", winner.getName());
         System.out.print("\n@@@@@            @@@@@@@@@@@@@@@@           @@@@@");
     }
 
