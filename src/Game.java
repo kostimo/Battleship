@@ -135,9 +135,9 @@ public class Game {
      */
     public static void greetWinner(Player winner)
     {
-        System.out.print("\n@@@@@            @@@@@@@@@@@@@@@@           @@@@@");
+        System.out.print("\n@@@@@@             @@@@@@@@@@@@@@@@@@             @@@@@@");
         System.out.printf("\nCongratulations, %s, you won! It was a brilliant battle.", winner.getName());
-        System.out.print("\n@@@@@            @@@@@@@@@@@@@@@@           @@@@@");
+        System.out.print("\n@@@@@@             @@@@@@@@@@@@@@@@@@             @@@@@@");
     }
 
     /**
