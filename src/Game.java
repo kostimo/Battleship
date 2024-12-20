@@ -91,7 +91,7 @@ public class Game {
         System.out.printf("\n%d ships left!", 5-player.getBoard().getShipsNum());
         System.out.print("""
                 \nTo create a ship enter: \n[1] Ship type: Destroyer (d) or Battleship (b)
-                \n[2] Ship orientation: Horizontal (h) or Vertical (v) \n[3] Row: (A-J) \n[4] Column: (0-9)\n
+                [2] Ship orientation: Horizontal (h) or Vertical (v) \n[3] Row: (A-J) \n[4] Column: (0-9)\n
                 """);
 
         System.out.print("Ship type: ");

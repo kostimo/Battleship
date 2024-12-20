@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * This abstract class represents a ship.
@@ -105,4 +106,12 @@ public abstract class Ship {
      * @return a list containing {@link shipCell}-objects
      */
     public ArrayList<shipCell> getShipCells() { return shipCells; }
+
+    public void generateRandomShip(){
+        Random random = new Random();
+        int size = random.nextBoolean() ? 2 : 4;
+        int x = random.nextInt(0,9);
+        int y = random.nextInt(0,9);
+        boolean isVertical = random.nextBoolean();
+    }
 }
