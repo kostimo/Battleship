@@ -6,7 +6,7 @@ public interface PlayerAction {
      * Places a ship
      * @param ship {@link Ship}-object
      */
-    void placeShip(Ship ship);
+    boolean placeShip(Ship ship);
 
     /**
      * Shoots at a specific position.
@@ -14,5 +14,5 @@ public interface PlayerAction {
      * @param x x-coordinate of the shot
      * @param y y-coordinate of the shot
      */
-    void shoot(int x, int y);
+    void shoot(int x, int y, Player shootingPlayer);
 }

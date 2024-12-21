@@ -84,7 +84,7 @@ public class Game {
      *
      * @param player the player whose turn it is
      */
-    public static void askForShip(Player player)
+    public static boolean askForShip(Player player)
     {
         Scanner sc = new Scanner(System.in);
         if (player.getBoard().getShipsNum() == 0) System.out.print("\nTime for you to create ships!");
@@ -101,13 +101,20 @@ public class Game {
         System.out.print("Row: ");
         char row = Character.toUpperCase(sc.next().charAt(0));
         System.out.print("Column: ");
-        int column = sc.nextInt();
+        int column = Character.getNumericValue(sc.next().charAt(0));
 
-        // i.e. by incorrect input a destroyer will simply be created
+        // if 'b' is not recognized, a destroyer is to be created
+        // if 'v' is not recognized, a ship will be horizontal
         Ship ship = (type == 'b')
                 ? new Battleship(column, (int)row-65, orientation == 'v')
                 : new Destroyer(column, (int)row-65, orientation == 'v');
-        player.placeShip(ship);
+
+        if (player.placeShip(ship)) return true;
+        else
+        {
+            System.out.print("\nT r y   a g a i n\n");
+            return false;
+        }
     }
 
     /**
@@ -116,7 +123,7 @@ public class Game {
      *
      * @param player the player whose turn it is
      */
-    public static void askToShoot(Player player)
+    public static void askToShoot(Player currentPlayer, Player opponent)
     {
         System.out.print("\nMy capitan, send this pirate to the bottom!");
         System.out.print("\n(first character is the row, second - the column, without space)\n For example: a0\n");
@@ -125,7 +132,7 @@ public class Game {
         String input =sc.next();
         char row = Character.toUpperCase(input.charAt(0));
         int column = Character.getNumericValue(input.charAt(1));
-        player.shoot(column, row-65);
+        opponent.shoot(column, row-65, currentPlayer); // opponent's board gets shot by currentPlayer
     }
 
     /**

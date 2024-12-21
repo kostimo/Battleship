@@ -29,7 +29,7 @@ public class Main {
                 Game.askForName(currentPlayer);
                 for (int i = 0; i < 5; i++) {
                     Game.showBoard(currentPlayer, false);
-                    Game.askForShip(currentPlayer);
+                    while (!Game.askForShip(currentPlayer)); // infinite loop til valid ship creation
                 }
                 Game.showBoard(currentPlayer, false);
                 System.out.print("\nGreat, my capitan! All ships are successfully placed!\n\n");
@@ -38,8 +38,9 @@ public class Main {
             } else
             {
                 // one-time message in the beginning
-                if (iteration == 2) System.out.print("\nMay BATTLESHIP begin!\n");
+                if (iteration == 2) System.out.print("\n        May BATTLESHIP begin!\n");
 
+                // printing players' boards
                 Game.printPlayerHeader(currentPlayer);
                 Game.showBoard(currentPlayer, false);
                 System.out.print("""
@@ -48,9 +49,8 @@ public class Main {
                                  V""");
                 Game.showBoard(nextPlayer, true);
 
-                // opponent gets shot
                 do {
-                    Game.askToShoot(nextPlayer);
+                    Game.askToShoot(currentPlayer, nextPlayer); // nextPlayer gets shot
                 }
                 while (currentPlayer.isSecondTry());
 

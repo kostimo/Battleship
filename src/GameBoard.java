@@ -76,33 +76,40 @@ public class GameBoard {
      * @param y y-coordinate
      * @return true if a ship was shot, otherwise false
      */
-    public boolean shootShip(Player player, int x, int y)
+    public void shootShip(int x, int y, Player shootingPlayer)
     {
-        switch (grid[y][x]) {
-            case "~":
-                grid[y][x] ="_";
-                return false;
-            case "■":
-                // traversing shipCells
-                for (Ship ship : this.shipsOnBoard) {
-                    for (shipCell cell : ship.getShipCells()) {
-                        // there is a shipCell whose coordinates match up with the grid cell that's being shot
-                        if (cell.getX() == x && cell.getY() == y) {
-                            cell.setIsDamaged();
-                            return true;
+        if (!Validation.checkShootCoordinates(x, y))
+        {
+            System.out.print("\nShooting coordinates outer the board");
+            shootingPlayer.setSecondTry(true);
+        } else {
+            switch (grid[y][x]) {
+                // player missed
+                case "~":
+                    grid[y][x] = "_";
+                    System.out.println("Oh no, you have missed!\n\n");
+                // player shot a ship
+                case "■":
+                    // traversing shipCells
+                    for (Ship ship : this.shipsOnBoard) {
+                        for (shipCell cell : ship.getShipCells()) {
+                            // there is a shipCell whose coordinates match up with the grid cell that's being shot
+                            if (cell.getX() == x && cell.getY() == y) {
+                                cell.setIsDamaged();
+                                System.out.println("Success! A ship is damaged.\n\n");
+                            }
                         }
                     }
-                }
-            case "*":
-                player.setSecondTry(true);
-                return false;
+                // player chose area that's already been shot
+                case "*":
+                case "_":
+                    shootingPlayer.setSecondTry(true);
+                    System.out.println("You have already shot here earlier.\n" +
+                                       "Please choose another area and try again.\n");
+            }
         }
-        // normally it shouldn't be executed;
-        System.out.println("GameBoard.shootShip() error");
-        return false;
     }
 
-    // FUNCTION DOESNT CHECK SHIP OVERLAPPING
     /**
      * Places a ship on the in the {@link Ship}-class specified position, either vertically or horizontally.
      *
@@ -110,24 +117,18 @@ public class GameBoard {
      * @return true if the ship is successfully placed, false if placement is invalid
      */
     public boolean placeShip(Ship ship) {
-        // if ship is vertical
-        if (ship.getVertical()) {
-            if (ship.getPosition()[1] + ship.getSize() - 1 >= ROWS || ship.getPosition()[0] >= COLS) {
-                return false;
-            } else {
-                shipsOnBoard.add(ship);
-                return true;
-            }
+        if (!Validation.checkShipCoordinates(ship, ROWS, COLS))
+        {
+            System.out.print("\nInvalid coordinates: ship outer the board");
+            return false;
         }
-        // if ship is horizontal
-        else {
-            if (ship.getPosition()[0] + ship.getSize() - 1 >= COLS || ship.getPosition()[1] >= ROWS) {
-                return false;
-            } else {
-                shipsOnBoard.add(ship);
-                return true;
-            }
+        if (Validation.shipsOverlapping(ship, shipsOnBoard))
+        {
+            System.out.print("\nInvalid coordinates: ships overlap");
+            return false;
         }
+        shipsOnBoard.add(ship);
+        return true;
     }
 
     /**

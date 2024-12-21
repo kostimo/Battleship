@@ -16,10 +16,11 @@ public class Player implements PlayerAction {
      * @param ship {@link Ship}-object
      */
     @Override
-    public void placeShip(Ship ship) {
+    public boolean placeShip(Ship ship) {
         boolean success = this.board.placeShip(ship);
-        if (success) System.out.print("Success! The ship is placed.");
-        else System.out.print("Error! The ship couldn't be placed.");
+        if (success) {System.out.print("Success! The ship is placed.\n"); return true;}
+        else System.out.print("\n!!! The ship couldn't be placed !!!\n");
+        return false;
     }
 
     /**
@@ -30,14 +31,11 @@ public class Player implements PlayerAction {
      * @param y y-coordinate of the shot
      */
     @Override
-    public void shoot(int x, int y) {
-        this.secondTry =false;
-        boolean success = this.board.shootShip(this, x, y);
-
-        if (success)             System.out.println("Success! A ship is damaged.\n\n");
-        else if (this.secondTry) System.out.println("You have already shot here earlier.\n" +
-                                                    "Please choose another area and try again.\n");
-        else                     System.out.println("Oh no, you have missed!\n\n");
+    public void shoot(int x, int y, Player shootingPlayer) {
+        shootingPlayer.setSecondTry(false);
+        // after board.shootShip(), shootingPlayer.secondTry may become true
+        this.board.shootShip(x, y, shootingPlayer);
+        if (shootingPlayer.isSecondTry()) System.out.print("\nT r y   a g a i n\n");
     }
 
     /**
