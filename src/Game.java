@@ -90,24 +90,34 @@ public class Game {
         if (player.getBoard().getShipsNum() == 0) System.out.print("\nTime for you to create ships!");
         System.out.printf("\n%d ships left!", 5-player.getBoard().getShipsNum());
         System.out.print("""
-                \nTo create a ship enter: \n[1] Ship type: Destroyer (d) or Battleship (b)
+                \nTo create a ship enter: \n[1] Ship type: Destroyer (d), Battleship (b) or
+                type (r) to have a random created and placed ship
                 [2] Ship orientation: Horizontal (h) or Vertical (v) \n[3] Row: (A-J) \n[4] Column: (0-9)\n
                 """);
 
+        Ship ship;
+
         System.out.print("Ship type: ");
         char type = sc.next().charAt(0);
-        System.out.print("Ship orientation: ");
-        char orientation = sc.next().charAt(0);
-        System.out.print("Row: ");
-        char row = Character.toUpperCase(sc.next().charAt(0));
-        System.out.print("Column: ");
-        int column = Character.getNumericValue(sc.next().charAt(0));
 
-        // if 'b' is not recognized, a destroyer is to be created
-        // if 'v' is not recognized, a ship will be horizontal
-        Ship ship = (type == 'b')
+        if (Character.toLowerCase(type) == 'r')
+        {
+            ship =new randomShip();
+        } else
+        {
+            System.out.print("Ship orientation: ");
+            char orientation = sc.next().charAt(0);
+            System.out.print("Row: ");
+            char row = Character.toUpperCase(sc.next().charAt(0));
+            System.out.print("Column: ");
+            int column = Character.getNumericValue(sc.next().charAt(0));
+
+            // if 'b' is not recognized, a destroyer is to be created
+            // if 'v' is not recognized, a ship will be horizontal
+            ship = (type == 'b')
                 ? new Battleship(column, (int)row-65, orientation == 'v')
                 : new Destroyer(column, (int)row-65, orientation == 'v');
+        }
 
         if (player.placeShip(ship)) return true;
         else
