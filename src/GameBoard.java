@@ -67,14 +67,12 @@ public class GameBoard {
     }
 
     /**
-     * Attempts to shoot at a specific cell on the board.
-     * If the cell contains part of a ship, it marks the ship cell as damaged.
-     * If the cell has already been shot at, the player will be notified.
+     * Handles the logic for shooting at a ship on the game board, validates the shot coordinates and
+     * updates the board based on whether the shot is a miss, a hit, or an invalid shot (already shot).
      *
-     * @param player The player who is shooting
      * @param x x-coordinate
      * @param y y-coordinate
-     * @return true if a ship was shot, otherwise false
+     * @param shootingPlayer the player who is making the shot
      */
     public void shootShip(int x, int y, Player shootingPlayer)
     {
@@ -116,10 +114,10 @@ public class GameBoard {
     }
 
     /**
-     * Places a ship on the in the {@link Ship}-class specified position, either vertically or horizontally.
+     * Attempts to place a {@code Ship} on the board. Validates the ship's coordinates and checks for overlapping ships.
      *
      * @param ship The ship that gets placed on the board
-     * @return true if the ship is successfully placed, false if placement is invalid
+     * @return true if the ship is successfully placed, false if the placement is invalid
      */
     public boolean placeShip(Ship ship) {
         if (!Validation.checkShipCoordinates(ship, ROWS, COLS))
