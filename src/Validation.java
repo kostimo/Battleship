@@ -7,7 +7,7 @@ public class Validation {
 
     public static boolean checkShootCoordinates(int x, int y)
     {
-        if (x >= 0 && x <= 9) return (y >= 'A' && y <= 'J');
+        if (x >= 0 && x <= 9) return (y >= 'A'-65 && y <= 'J'-65);
         return false;
     }
     //returns true if coordinates valid
