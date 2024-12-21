@@ -84,7 +84,7 @@ public class GameBoard {
             switch (grid[y][x]) {
                 // player missed
                 case "~":
-                    grid[y][x] = "_";
+                    grid[y][x] = "○";
                     System.out.println("Oh no, you have missed!\n\n");
                     break;
                 // player shot a ship
@@ -104,7 +104,7 @@ public class GameBoard {
                     break;
                 // player chose area that's already been shot
                 case "*":
-                case "_":
+                case "○":
                     shootingPlayer.setSecondTry(true);
                     System.out.println("You have already shot here earlier.\n" +
                                        "Please choose another area and try again.\n");
