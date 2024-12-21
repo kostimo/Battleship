@@ -1,16 +1,13 @@
 /**
- * The Main class is the entry point for the Battleship game. It contains the main method
- * which orchestrates the game flow between two players. The game progresses by alternating turns,
- * where players register their names, place ships on their boards, and then take turns shooting at
- * each other's ships until one player wins.
+ * Main class to start and run the Battleship game. Manages player setup, board display,
+ * shooting actions, and checks for the winner in each iteration.
  */
 public class Main {
     /**
-     * The main method that initializes the game and handles the flow of the Battleship game between two players.
-     * It sets up the players, handles their registration, ship placement, and alternates turns for the gameplay.
-     * The game continues until one player sinks all the opponent's ships.
+     * The entry point of the Battleship game. Manages game flow, including player registration,
+     * ship placement, shooting, and winner determination.
      *
-     * @param args the command-line arguments (not used in this program)
+     * @param args Command-line arguments (not used in this game).
      */
     public static void main(String[] args) {
         Player[] players = new Player[2];
