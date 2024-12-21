@@ -29,6 +29,19 @@ public class shipCell {
         System.out.println("shipCell: " + x + " " + y + " " + isDamaged);
     }
 
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        shipCell other = (shipCell) obj;
+        return (this.x == other.x) && (this.y == other.y);
+    }
+
     /**
      * Gets the status of a ship cell.
      *
