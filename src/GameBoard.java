@@ -88,24 +88,29 @@ public class GameBoard {
                 case "~":
                     grid[y][x] = "_";
                     System.out.println("Oh no, you have missed!\n\n");
+                    break;
                 // player shot a ship
                 case "■":
                     // traversing shipCells
+                    outerLoop:
                     for (Ship ship : this.shipsOnBoard) {
                         for (shipCell cell : ship.getShipCells()) {
                             // there is a shipCell whose coordinates match up with the grid cell that's being shot
                             if (cell.getX() == x && cell.getY() == y) {
                                 cell.setIsDamaged();
                                 System.out.println("Success! A ship is damaged.\n\n");
+                                break outerLoop;
                             }
                         }
                     }
+                    break;
                 // player chose area that's already been shot
                 case "*":
                 case "_":
                     shootingPlayer.setSecondTry(true);
                     System.out.println("You have already shot here earlier.\n" +
                                        "Please choose another area and try again.\n");
+                    break;
             }
         }
     }
