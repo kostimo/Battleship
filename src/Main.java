@@ -66,6 +66,6 @@ public class Main {
             Game.increment();
         }
 
-        System.out.print("\n---------------GAME OVER---------------\n");
+        System.out.print("\n\n---------------GAME OVER---------------\n");
     }
 }

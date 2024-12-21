@@ -22,10 +22,11 @@ public abstract class Ship {
     public Ship(int size, int x, int y, boolean isVertical)
     {
         this.size        =size;
-        this.shipCells   =new ArrayList<>(size);
         this.position[0] =x;
         this.position[1] =y;
         this.isVertical  =isVertical;
+
+        this.shipCells   =new ArrayList<>(size);
         fillShipCellArray();
     }
 
@@ -106,12 +107,4 @@ public abstract class Ship {
      * @return a list containing {@link shipCell}-objects
      */
     public ArrayList<shipCell> getShipCells() { return shipCells; }
-
-    public void generateRandomShip(){
-        Random random = new Random();
-        int size = random.nextBoolean() ? 2 : 4;
-        int x = random.nextInt(0,9);
-        int y = random.nextInt(0,9);
-        boolean isVertical = random.nextBoolean();
-    }
 }

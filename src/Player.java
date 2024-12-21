@@ -35,7 +35,7 @@ public class Player implements PlayerAction {
         shootingPlayer.setSecondTry(false);
         // after board.shootShip(), shootingPlayer.secondTry may become true
         this.board.shootShip(x, y, shootingPlayer);
-        if (shootingPlayer.isSecondTry()) System.out.print("\nT r y   a g a i n\n");
+        if (shootingPlayer.isSecondTry()) System.out.print("\nN e x t   t r y\n");
     }
 
     /**
