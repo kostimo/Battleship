@@ -6,12 +6,12 @@ Things likely to be implemented:
 [done] Ship.direction likely to be boolean and be named smth. like isVertical
 
 [done] shooting logic for player is not implemented yet (Player.shoot())
-* ship overlapping check is not done yet (in GameBoard.placeShip())
-* GameBoard may need a method to check if all ships on the board are destroyed
+[done] ship overlapping check is not done yet (in GameBoard.placeShip())
+[done] GameBoard may need a method to check if all ships on the board are destroyed
   (could be named areAllShipsDestroyed). It will be used in Game.checkWinner()
 
 [10.12.2024]
-* game loop and the class Game.java
+[done] game loop and the class Game.java
 * update UML class diagram
 
 [20.12.2024]
