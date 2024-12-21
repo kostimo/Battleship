@@ -29,6 +29,14 @@ public class shipCell {
         System.out.println("shipCell: " + x + " " + y + " " + isDamaged);
     }
 
+    /**
+     * Compares this ship cell to another object to see if they're the same.
+     * They are the same when they have to same coordinates.
+     *
+     * @param obj object to be compared
+     * @return true if the objects are the same or rather have the same coordinates,
+     *         false otherwise or rather if {@code obj} is {@code null} or isn't an instance of {@code shipCell}
+     */
     @Override
     public boolean equals(Object obj)
     {
@@ -62,6 +70,7 @@ public class shipCell {
 
     /**
      * Gets the x-coordinate of the ship cell
+     *
      * @return x-coordinate
      */
     public int getX()
