@@ -102,7 +102,7 @@ public class Game {
 
         if (Character.toLowerCase(type) == 'r')
         {
-            ship =new randomShip();
+            ship =new RandomShip();
         } else
         {
             System.out.print("Ship orientation: ");
@@ -170,10 +170,5 @@ public class Game {
             if (players[i].getBoard().areAllShipsSunk()) return (i+1)%2; // returns index of winner
         }
         return -1; // when there is no winner yet
-    }
-
-    public static void placeShip(Player player)
-    {
-
     }
 }

@@ -1,10 +1,6 @@
 import java.util.ArrayList;
 
 public class Validation {
-//    private boolean shootCoordinatesOuterBoard;
-//    private boolean shipCoordinatesOuterBoard;
-//    private boolean shipOverlapping;
-
     public static boolean checkShootCoordinates(int x, int y)
     {
         if (x >= 0 && x <= 9) return (y >= 'A'-65 && y <= 'J'-65);
