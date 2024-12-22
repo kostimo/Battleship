@@ -140,7 +140,13 @@ public class Game {
         System.out.print("\n(first character is the row, second - the column, without space)\n For example: a0\n");
         System.out.print("\nEnter your coordinates: ");
         Scanner sc = new Scanner(System.in);
-        String input =sc.next();
+        String input;
+        do {
+            input =sc.next();
+            if (input.length() == 1) {
+                System.out.print("Invalid coordinate, please try again: ");
+            }
+        }while (input.length() == 1);
         char row = Character.toUpperCase(input.charAt(0));
         int column = Character.getNumericValue(input.charAt(1));
         opponent.shoot(column, row-65, currentPlayer); // opponent's board gets shot by currentPlayer
