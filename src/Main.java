@@ -29,7 +29,7 @@ public class Main {
                     while (!Game.askForShip(currentPlayer)); // infinite loop til valid ship creation
                 }
                 Game.showBoard(currentPlayer, false);
-                System.out.print("\nGreat, my capitan! All ships are successfully placed!\n\n");
+                System.out.print("\nGreat, my captain! All ships are successfully placed!\n\n");
 
                 // battleship begins
             } else

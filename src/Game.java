@@ -56,12 +56,12 @@ public class Game {
      */
     public static void askForName(Player player) {
         printPlayerHeader(null);
-        System.out.print("Enter your name, capitan!\n" +
+        System.out.print("Enter your name, captain!\n" +
                             "-> ");
         Scanner sc = new Scanner(System.in);
         String name = sc.nextLine();
         player.setName(name);
-        System.out.printf("Aye Aye Captain %s!", player.getName());
+        System.out.printf("Aye aye, captain %s!", player.getName());
     }
 
     /**
@@ -136,7 +136,7 @@ public class Game {
      */
     public static void askToShoot(Player currentPlayer, Player opponent)
     {
-        System.out.print("\nMy capitan, send this pirate to the bottom!");
+        System.out.print("\nMy captain, send this pirate to the bottom!");
         System.out.print("\n(first character is the row, second - the column, without space)\n For example: a0\n");
         System.out.print("\nEnter your coordinates: ");
         Scanner sc = new Scanner(System.in);
