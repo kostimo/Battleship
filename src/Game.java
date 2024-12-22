@@ -91,7 +91,7 @@ public class Game {
         if (player.getBoard().getShipsNum() == 0) System.out.print("\nTime for you to create ships!");
         System.out.printf("\n%d ships left!", 5-player.getBoard().getShipsNum());
         System.out.print("""
-                \nTo create a ship enter: \n[1] Ship type: Destroyer (d), Battleship (b) or
+                \nTo create a ship, enter: \n[1] Ship type: Destroyer (d), Battleship (b) or
                 type (r) to have a random created and placed ship
                 [2] Ship orientation: Horizontal (h) or Vertical (v) \n[3] Row: (A-J) \n[4] Column: (0-9)\n
                 """);

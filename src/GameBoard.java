@@ -96,7 +96,9 @@ public class GameBoard {
                             // there is a shipCell whose coordinates match up with the grid cell that's being shot
                             if (cell.getX() == x && cell.getY() == y) {
                                 cell.setIsDamaged();
-                                System.out.println("Success! A ship is damaged.\n\n");
+                                System.out.println("Success! A ship is damaged.");
+                                if (ship.isSunk()) System.out.println("The ship is destroyed!\n\n");
+                                else System.out.println("\n");
                                 break outerLoop;
                             }
                         }
