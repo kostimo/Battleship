@@ -11,9 +11,10 @@ public class Player implements PlayerAction {
     private final GameBoard board =new GameBoard();
 
     /**
-     * Places a ship on the player's game board.
+     * Attempts to place a ship on the player's game board.
      *
-     * @param ship {@link Ship}-object
+     * @param ship the ship to be placed
+     * @return true if the ship was placed successfully, false otherwise
      */
     @Override
     public boolean placeShip(Ship ship) {
@@ -24,11 +25,11 @@ public class Player implements PlayerAction {
     }
 
     /**
-     * Shoots at a specific position on the game board.
-     * It also checks if the shot was successful, if the player has already shot there, or if it missed.
+     * Shoots at a specific position on the game board and lets the player shoot again if it was invalid
      *
      * @param x x-coordinate of the shot
      * @param y y-coordinate of the shot
+     * @param shootingPlayer the player who is shooting
      */
     @Override
     public void shoot(int x, int y, Player shootingPlayer) {

@@ -80,9 +80,10 @@ public class Game {
 
     /**
      * Asks the player where the ship should be placed.
-     * The player selects the ship type, orientation, and position.
+     * The player selects the ship type, orientation, and position or if the ship should be placed randomly.
      *
      * @param player the player whose turn it is
+     * @return true if the ship is placed successfully, false otherwise
      */
     public static boolean askForShip(Player player)
     {
@@ -128,10 +129,10 @@ public class Game {
     }
 
     /**
-     * Asks the player where they want to shoot.
-     * The player has to enter the coordinates.
+     * Asks the current player to enter coordinates for a shot and processes the shot on the opponent's board.
      *
-     * @param player the player whose turn it is
+     * @param currentPlayer the player making the shot
+     * @param opponent the player being targeted
      */
     public static void askToShoot(Player currentPlayer, Player opponent)
     {
