@@ -37,7 +37,7 @@ To run this project locally, follow these steps:
    
 ## Usage
 After running the game, follow the on-screen instructions to place your ships and
-start playing against the computer. The objective is to sink all of the opponent's
+start playing against another player. The objective is to sink all of the opponent's
 ships before they sink yours.
 
 
