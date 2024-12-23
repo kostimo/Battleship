@@ -9,7 +9,7 @@ public abstract class Ship {
     private final int size;
     private final boolean isVertical;
     private final int[] position =new int[2]; //array with length 2 for ships (x, y) coordinates
-    private final ArrayList<shipCell> shipCells;
+    private final ArrayList<ShipCell> shipCells;
 
     /**
      * This is the constructor for a ship.
@@ -31,7 +31,7 @@ public abstract class Ship {
     }
 
     /**
-     * This method creates {@link shipCell}-objects, where a ship is placed.
+     * This method creates {@link ShipCell}-objects, where a ship is placed.
      * The ship cells are placed horizontally or vertically on the grid depending on the direction of the ship.
      */
     private void fillShipCellArray()
@@ -39,13 +39,13 @@ public abstract class Ship {
         if (this.isVertical)     // vertical direction
         {
             for (int i = 0; i < this.size; i++) {
-                shipCell cell = new shipCell(this.position[0], this.position[1]+i);
+                ShipCell cell = new ShipCell(this.position[0], this.position[1]+i);
                 shipCells.add(cell);
             }
         } else                   // horizontal direction
         {
             for (int i = 0; i < this.size; i++) {
-                shipCell cell = new shipCell(this.position[0] + i, this.position[1]);
+                ShipCell cell = new ShipCell(this.position[0] + i, this.position[1]);
                 shipCells.add(cell);
             }
         }
@@ -60,7 +60,7 @@ public abstract class Ship {
     public boolean isSunk()
     {
         boolean isSunk = true;
-        for(shipCell cell: this.shipCells)
+        for(ShipCell cell: this.shipCells)
         {
             if (!cell.getIsDamaged()) // if at least one cell is not damaged, then the ship isn't sunk yet
             {
@@ -77,7 +77,7 @@ public abstract class Ship {
     public void printShipCells()
     {
         System.out.println("shipCells:");
-        for (shipCell cell: shipCells) { cell.printCell(); }
+        for (ShipCell cell: shipCells) { cell.printCell(); }
     }
 
     /**
@@ -104,7 +104,7 @@ public abstract class Ship {
     /**
      * Gets a list of the ship cells
      *
-     * @return a list containing {@link shipCell}-objects
+     * @return a list containing {@link ShipCell}-objects
      */
-    public ArrayList<shipCell> getShipCells() { return shipCells; }
+    public ArrayList<ShipCell> getShipCells() { return shipCells; }
 }

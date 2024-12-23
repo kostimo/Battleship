@@ -38,7 +38,7 @@ public class GameBoard {
     {
         for (Ship ship: shipsOnBoard)     // traverses all ships on the board
         {
-            for (shipCell cell: ship.getShipCells())    // traverses shipCell's within each ship
+            for (ShipCell cell: ship.getShipCells())    // traverses ShipCell's within each ship
             {
                 int x =cell.getX();
                 int y =cell.getY();
@@ -89,11 +89,11 @@ public class GameBoard {
                     break;
                 // player shot a ship
                 case "■":
-                    // traversing shipCells
+                    // traversing ShipCells
                     outerLoop:
                     for (Ship ship : this.shipsOnBoard) {
-                        for (shipCell cell : ship.getShipCells()) {
-                            // there is a shipCell whose coordinates match up with the grid cell that's being shot
+                        for (ShipCell cell : ship.getShipCells()) {
+                            // there is a ShipCell whose coordinates match up with the grid cell that's being shot
                             if (cell.getX() == x && cell.getY() == y) {
                                 cell.setIsDamaged();
                                 System.out.println("Success! A ship is damaged.");

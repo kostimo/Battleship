@@ -3,7 +3,7 @@
  * Each cell has specific coordinates and a status which tells us whether the ship cell is damaged or not.
  * This allows us to check if the ship has sunk if all of its cells are damaged.
  */
-public class shipCell {
+public class ShipCell {
     private final int x;
     private final int y;
     private boolean isDamaged =false;
@@ -15,7 +15,7 @@ public class shipCell {
      * @param x x-coordinate
      * @param y y-coordinate
      */
-    public shipCell(int x, int y)
+    public ShipCell(int x, int y)
     {
         this.x =x;
         this.y =y;
@@ -26,7 +26,7 @@ public class shipCell {
      */
     public void printCell()
     {
-        System.out.println("shipCell: " + x + " " + y + " " + isDamaged);
+        System.out.println("ShipCell: " + x + " " + y + " " + isDamaged);
     }
 
     /**
@@ -35,7 +35,7 @@ public class shipCell {
      *
      * @param obj object to be compared
      * @return true if the objects are the same or rather have the same coordinates,
-     *         false otherwise or rather if {@code obj} is {@code null} or isn't an instance of {@code shipCell}
+     *         false otherwise or rather if {@code obj} is {@code null} or isn't an instance of {@code ShipCell}
      */
     @Override
     public boolean equals(Object obj)
@@ -46,7 +46,7 @@ public class shipCell {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        shipCell other = (shipCell) obj;
+        ShipCell other = (ShipCell) obj;
         return (this.x == other.x) && (this.y == other.y);
     }
 

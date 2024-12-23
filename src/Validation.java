@@ -65,9 +65,9 @@ public class Validation {
      */
     private static boolean shipAndShipOverlapping(Ship shipFromInput, Ship shipFromBoard)
     {
-        for (shipCell cellInputShip: shipFromInput.getShipCells())
+        for (ShipCell cellInputShip: shipFromInput.getShipCells())
         {
-            for (shipCell cellBoardShip: shipFromBoard.getShipCells())
+            for (ShipCell cellBoardShip: shipFromBoard.getShipCells())
             {
                 if (cellInputShip.equals(cellBoardShip)) return true;
             }
